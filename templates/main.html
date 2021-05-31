@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            border-radius: 5px;
+            background: linear-gradient(#4481eb,#04befe);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="user">
+        <h1>Main Page</h1>
+        {%if userid%}
+        <p>{{userid}}님 환영합니다</p><button type="button" onclick="location.href='/signout'">로그아웃</button>
+        <div class="diary">
+            {% block content %}
+                {% for diary in diarytable %}
+                    <!-- <img src="{{diary.diary_image}}" width="200" height="200"/> -->
+                    <p><a href="/main/{{diary.id}}">{{diary.diary_title,diary.diary_date}}</a></p>
+                {% endfor %}
+            {% endblock %}
+        </div>
+        {%endif%}
+    </div>
+    <button type="button" onclick="location.href='uploadDiary'">upload diary</button>
+
+</body>
+</html>

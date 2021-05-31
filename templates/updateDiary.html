@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            border-radius: 5px;
+            background: linear-gradient(#4481eb,#04befe);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" name="update_form" enctype="multipart/form-data">
+
+        {{form.csrf_token}}
+        <label for="diary_title">제목</label>
+        <input type="text" class="form-control" id="diary_title" name="diary_title" value="{{diary.diary_title}}" required/><br><br>
+        
+        <label for="diary_date">날짜</label>
+        <input type="date" class="form-control" id="diary_date" name="diary_date" value="{{diary.diary_date}}" required/><br><br>
+        
+        <label for="diary_content">내용</label><br>
+        <textarea cols="50" rows="20" class="form-control" id="diary_content" name="diary_content">{{diary.diary_content}}</textarea><br><br>
+       
+        {% if image %}
+        <img src="data:;base64,{{image}}" width="300" height="300"/>
+        {% endif %}
+        <label for="image">사진 업로드</label>
+        <input type="file" id="image" name="image"/>
+
+        <button type="submit" onclick="update()">완료</button>
+    </form>
+    <button type="button" onclick="location.href='main'">취소</button>
+    <script>
+        function update(){
+            var ans = confirm('이대로 수정하시겠습니까??')
+            if(ans){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

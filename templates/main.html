@@ -5,10 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <style>
+        .btn-floating {
+            color: #fff;
+            padding: 0;
+            width: 55.5px; height: 55.5px;
+            display: inline-block;
+            outline: 0;
+            border: none;
+            text-decoration: none;
+            background: #2196F3;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+        .btn-floating:hover {
+            background: #42A5F5;
+        }
+        .btn-floating div {
+            font-size: 1.8em;
+            padding: 0;
+            margin: .22em 0 0 0;
+        }
         button{
-            border-radius: 5px;
-            background: linear-gradient(#4481eb,#04befe);
+            border: none;
+            border-radius: 10px;
+            background:#42A5F5;
+            color: white;
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            font-family: "Bazzi";
+        }
+        button:hover{
+            background: #148df0;
             color: white;
         }
     </style>
@@ -28,7 +59,6 @@
         </div>
         {%endif%}
     </div>
-    <button type="button" onclick="location.href='uploadDiary'">upload diary</button>
-
+    <a href='uploadDiary' class='btn-floating'><div><i class="fa fa-pencil"></i></div></a>
 </body>
 </html>

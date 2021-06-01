@@ -19,19 +19,32 @@ def main():
 @app.route('/main/<int:id>')
 def diary(id):
     diary = Diary.query.filter_by(id=id).first()
+    year = diary.diary_date[0:4]
+    month_day = diary.diary_date[5:7] + '/' + diary.diary_date[8:10]
+
     if diary.diary_image:
         image = b64encode(diary.diary_image).decode('utf-8')
-        return render_template('diary.html',diary=diary, image=image)
+        return render_template('diary.html',diary=diary, image=image,year=year,month_day=month_day)
     else:
-        return render_template('diary.html',diary = diary)
+        return render_template('diary.html',diary = diary,year=year,month_day=month_day)
 
 @app.route('/', methods=['GET','POST'])
-def login():
+def login():  
     form = LoginForm()
-    if form.validate_on_submit():
-        session['userid'] = form.data.get('userid')
+    if request.method == "POST":
+        user = User().query.filter_by(userid=request.form.get('userid')).first()
+        if request.form.get('password') != user.password:
+            flash('비밀번호가 맞지 않습니다')
+            return render_template('login.html',form=form)
+        session['userid'] = user.userid
         return redirect('/main')
-    return render_template('login.html', form=form)
+    else:
+        return render_template('login.html',form=form)
+    # form = LoginForm()
+    # if form.validate_on_submit():
+    #     session['userid'] = form.data.get('userid')
+    #     return redirect('/main')
+    # return render_template('login.html', form=form)
 
 @app.route('/signout',methods=['GET','POST'])
 def signout():
@@ -50,7 +63,7 @@ def signup():
         if not(username and userid and userpw and userpwck):
             flash("모두 입력해주세요")
         elif userpw != userpwck:
-            return "비밀번호가 일치하지 않습니다"
+            flash("비밀번호가 일치하지 않습니다")
         else:
             new_user = User()
             new_user.username = username
@@ -60,6 +73,7 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             flash("회원가입 완료")
+            return redirect('/')
     return render_template('signup.html', form=form)
 
 @app.route('/uploadDiary',methods=['GET','POST'])

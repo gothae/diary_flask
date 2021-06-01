@@ -5,54 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        button{
-            border: none;
-            border-radius: 10px;
-            background:#42A5F5;
-            color: white;
-            width: 80px;
-            height: 40px;
-            text-align: center;
-        }
-        button:hover{
-            background: #148df0;
-            color: white;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/login/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="static/login/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/login/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="static/login/css/style.css">
+
 </head>
 <body>
-    <h1>회원가입</h1>
+    <div class="d-md-flex half">
+        <div class="bg" style="background-image: url('/static/login/images/bg_1.jpg');"></div>
+        <div class="contents">
+    
+          <div class="container">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-md-12">
+                <div class="form-block mx-auto">
+                  <div class="text-center mb-5">
+                    <h3 class="text-uppercase">회원 가입</h3>
+                  </div>
+                  <form  method="post" name="signup_form">
+                    {{form.csrf_token}}
+                    <div class="form-group first">
+                      <label for="username">이름</label>
+                      <input type="text" class="form-control" id="username" name="username" required/>
+                    </div>
+                    <div class="form-group last mb-3">
+                      <label for="userid">ID</label>
+                      <input type="text" class="form-control" id="userid" name="userid" required/><br><br>
+                      
+                      <label for="userpw">비밀번호</label>
+                      <input type="password" class="form-control" id="userpw" name="userpw" onchange="isSame()" required/><br><br>
+                      
+                      <label for="userpwck">비밀번호 확인</label>
+                      <input type="password" class="form-control" id="userpwck" name="userpwck" onchange="isSame()" required/><br><br>
+                      <p id="same"></p>
+                    </div>
+    
+                    <input type="submit" value="가입" class="btn btn-block py-2 btn-primary"><br>          
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%with messages = get_flashed_messages()%}
+      {%if messages %}
+      <script type="text/javascript">
+          alert("{{messages[-1]}}");
+      </script>
+      {%endif%}
+      {%endwith%}
+      <script>
+        // var frm = document.forms['signup_form'];
+        // var btn = document.getElementsByTagName('button')[0];
 
-    <form method="POST" name="signup_form">
-        {{form.csrf_token}}
-        <label for="username">이름</label>
-        <input type="text" class="form-control" id="username" name="username" required/><br><br>
-        
-        <label for="userid">ID</label>
-        <input type="text" class="form-control" id="userid" name="userid" required/><br><br>
-        
-        <label for="userpw">비밀번호</label>
-        <input type="password" class="form-control" id="userpw" name="userpw" required/><br><br>
-        
-        <label for="userpwck">비밀번호 확인</label>
-        <input type="password" class="form-control" id="userpwck" name="userpwck" required/><br><br>
+        var pw = document.getElementById('userpw').value;
+        var pwck = document.getElementById('userpwck').value;
 
-        <button type="submit" class="btn btn-primary">가입</button>
-    </form>
-    <script>
-        var frm = document.forms['signup_form'];
-        var btn = document.getElementsByTagName('button')[0];
+        // btn.addEventListener('click',function(){
+        //     var pw = document.getElementById('userpw').value;
+        //     var pwck = document.getElementById('userpwck').value;
+        //     if (pw !=pwck){
+        //         alert('비밀번호가 일치하지 않습니다');
+        //         pw.focus();
+        //         return false;
+        //     }
+        // })
 
-        btn.addEventListener('click',function(){
-            var pw = document.getElementById('userpw').value;
-            var pwck = document.getElementById('userpwck').value;
-            if (pw !=pwck){
-                alert('비밀번호가 일치하지 않습니다');
-                pw.focus();
-                return false;
+        function isSame(){
+            if(document.getElementById('userpw').value!='' && document.getElementById('userpwck').value!=''){
+                
+                if (document.getElementById('userpw').value != document.getElementById('userpwck').value){
+                    document.getElementById('same').innerHTML = '비밀번호가 일치하지 않습니다';
+                    document.getElementById('same').style.color = "red";
+                }else{
+                    document.getElementById('same').innerHTML = '비밀번호가 일치합니다'
+                    document.getElementById('same').style.color = 'blue';
+                }
             }
-        })
+        }
     </script>
 </body>
 </html>

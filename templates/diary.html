@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
+        body{
+            text-align: center;
+        }
         button{
             border: none;
             border-radius: 10px;
@@ -22,20 +26,21 @@
     </style>
 </head>
 <body>
-    <label for="diary_title">제목</label>
-    <p id="diary_title" name="diary_title">{{diary.diary_title}}</p><br><br>
+
+    <h2 id="diary_title" name="diary_title">{{diary.diary_title}}</h2><br><br>
+
+    <p id="diary_date" name="diary_date">{{month_day}}<span>{{year}}</span></p><br><br>
         
-    <label for="diary_date">날짜</label>
-    <p id="diary_date" name="diary_date">{{diary.diary_date}}</p><br><br>
-        
-    <label for="diary_content">내용</label>
-    <textarea cols="50" rows="20"id="diary_content" name="diary_content">{{diary.diary_content}}</textarea><br><br>
     {% if image %}
-    <img src="data:;base64,{{image}}" width="300" height="300"/>
+    <img src="data:;base64,{{image}}" width="350" height="350"/>
     {% endif %}
+
+    <p id="diary_content" name="diary_content">{{diary.diary_content}}</p><br><br>
+
     <button type="button"><a href="{{url_for('updateDiary',id=diary.id)}}">수정하기</a></button>
 
     <button type="button" id="btn_delete"><a onclick="return deleteDiary()" href="{{url_for('deleteDiary',id=diary.id)}}">삭제</a></button>
+
     <script>
         function deleteDiary(){
             var ans = confirm("정말로 삭제하시겠습니까?");

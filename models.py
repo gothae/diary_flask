@@ -17,4 +17,3 @@ class Diary(db.Model):
     diary_date = db.Column(db.String(8))
     diary_content = db.Column(db.String(1000))
     diary_image = db.Column(db.BLOB,nullable = True)
-    # diary_image = db.Column(db.LargeBinary(length = 2048))

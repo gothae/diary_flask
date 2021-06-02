@@ -1,46 +1,94 @@
 
-<!DOCTYPE html>
-<html style="font-size: 16px;">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Post 1 Headline">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>diary </title>
     <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Home</title>
-    <link rel="stylesheet" href="C:\Users\koxog\바탕 화면\diarypage\nicepage.css" media="screen">
-    <link rel="stylesheet" href="C:\Users\koxog\바탕 화면\diarypage\Home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="C:\Users\koxog\바탕 화면\diarypage\jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="C:\Users\koxog\바탕 화면\diarypage\nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 3.16.1, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="static/showdiary/img/favicon.ico">
     
+    <!-- CSS here -->
+    <link rel="stylesheet" href="static/showdiary/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/showdiary/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/showdiary/css/ticker-style.css">
+    <link rel="stylesheet" href="static/showdiary/css/flaticon.css">
+    <link rel="stylesheet" href="static/showdiary/css/slicknav.css">
+    <link rel="stylesheet" href="static/showdiary/css/animate.min.css">
+    <link rel="stylesheet" href="static/showdiary/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/showdiary/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="static/showdiary/css/themify-icons.css">
+    <link rel="stylesheet" href="static/showdiary/css/slick.css">
+    <link rel="stylesheet" href="static/showdiary/css/nice-select.css">
+    <link rel="stylesheet" href="static/showdiary/css/style.css">
+</head>
     
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "",
-		"url": "C:\Users\koxog\바탕 화면\diarypage\index.html"
-}</script>
-    <meta property="og:title" content="Home">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#478ac9">
-    <link rel="canonical" href="C:\Users\koxog\바탕 화면\diarypage\index.html">
-    <meta property="og:url" content="C:\Users\koxog\바탕 화면\diarypage\index.html">
-  </head>
-  <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-8163"><div class="u-clearfix u-sheet u-sheet-1"></div></header>
-    <section class="u-clearfix u-section-1" id="sec-021c"><!--post_details--><!--post_details_options_json--><!--{"source":""}--><!--/post_details_options_json--><!--blog_post-->
-      <div class="u-container-style u-expanded-width u-post-details u-post-details-1">
-        <div class="u-container-layout u-container-layout-1"><!--blog_post_header-->
-          <div class="u-custom-color-1 u-shape u-shape-circle u-shape-1"></div>
-          <p class="u-text u-text-2">12/27</p>
-          <p class="u-text u-text-3">2021<br>
-          </p><!--blog_post_image-->
-          <img src="/static/diary_image/yaya1.jpeg" alt="" class="u-align-center u-blog-control u-image u-image-default u-image-1"><!--/blog_post_image-->
-          <p class="u-align-center u-text u-text-4">Samplezzzzzzzzzzzzztext. Click to select the atext box. Click again or double click to start editing zthe text.</p>
-        </div>
-      </div><!--/blog_post--><!--/post_details-->
-    </section>
+<body>
 
-  </body>
+<main>
+    <!-- About US Start -->
+    <div class="about-area2 gray-bg pt-60 pb-60">
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Trending Tittle -->
+                        <div class="about-right mb-90">
+                            
+                            <div class="about-img">
+                                {% if image %}
+                                <img src="data:;base64,{{image}}" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="heading-news mb-30 pt-30">
+                                <h3>{{diary.diary_title}}</h3>
+                                <h5>{{month_day}} {{year}}</h5>
+                            </div>
+                            <div class="about-prea">
+                                <p class="about-pera1 mb-25">{{diary.diary_content}}</p>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</main>
+
+<!-- Search model Begin -->
+<div class="search-model-box">
+    <div class="d-flex align-items-center h-100 justify-content-center">
+        <div class="search-close-btn">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Searching key.....">
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
+
+<!-- JS here -->
+
+    <script src="./static/showdiary/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./static/showdiary/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./static/showdiary/js/popper.min.js"></script>
+    <script src="./static/showdiary/js/bootstrap.min.js"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="./static/showdiary/js/jquery.scrollUp.min.js"></script>
+    <script src="./static/showdiary/js/jquery.nice-select.min.js"></script>
+    <script src="./static/showdiary/js/jquery.sticky.js"></script>
+    
+    <!-- contact js -->
+    <script src="./static/showdiary/js/contact.js"></script>
+    <script src="./static/showdiary/js/jquery.form.js"></script>
+    <script src="./static/showdiary/js/jquery.validate.min.js"></script>
+    <script src="./static/showdiary/js/mail-script.js"></script>
+    <script src="./static/showdiary/js/jquery.ajaxchimp.min.js"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="./static/showdiary/js/plugins.js"></script>
+    <script src="./static/showdiary/js/main.js"></script>
+    
+</body>
 </html>

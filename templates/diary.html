@@ -23,24 +23,36 @@
             background: #148df0;
             color: white;
         }
+        .content{
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+        .title{
+            height: 250px;
+        }
+        #diary_title{
+            position: relative;
+            top: 50px;
+        }
     </style>
 </head>
 <body>
-
-    <h2 id="diary_title" name="diary_title">{{diary.diary_title}}</h2><br><br>
-
-    <p id="diary_date" name="diary_date">{{month_day}}<span> {{year}} </span></p><br><br>
+    <div class="title">
+    <h1 id="diary_title" name="diary_title">{{diary.diary_title}}</h1><br><br>
+    <p id="diary_date" name="diary_date">{{month_day}} {{year}} </p><br><br>
+    <hr>
+    </div>
         
     {% if image %}
-    <img src="data:;base64,{{image}}" width="350" height="350"/>
+    <img src="data:;base64,{{image}}" width="500" height="300"/>
     {% endif %}
-
+    <div class="content">
     <p id="diary_content" name="diary_content">{{diary.diary_content}}</p><br><br>
 
     <button type="button"><a href="{{url_for('updateDiary',id=diary.id)}}">수정하기</a></button>
 
     <button type="button" id="btn_delete"><a onclick="return deleteDiary()" href="{{url_for('deleteDiary',id=diary.id)}}">삭제</a></button>
-
+    </div>
     <script>
         function deleteDiary(){
             var ans = confirm("정말로 삭제하시겠습니까?");

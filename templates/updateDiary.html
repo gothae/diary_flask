@@ -5,7 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 30px;
+            margin-left: 300px;
+            margin-right: 300px;
+        }
         button{
             border: none;
             border-radius: 10px;
@@ -18,6 +27,11 @@
         button:hover{
             background: #148df0;
             color: white;
+        }
+        #back{
+            position: relative;
+            left: 500px;
+            bottom: 40px;
         }
     </style>
 </head>
@@ -42,7 +56,7 @@
 
         <button type="submit" onclick="update()">완료</button>
     </form>
-    <button type="button" onclick="location.href='main'">취소</button>
+    <button type="button" id="back" onclick="location.href='../main'">취소</button>
     <script>
         function update(){
             var ans = confirm('이대로 수정하시겠습니까??')

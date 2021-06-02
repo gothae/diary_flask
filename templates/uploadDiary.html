@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- jQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 30px;
+            margin-left: 300px;
+            margin-right: 300px;
+        }
         button{
             border: none;
             border-radius: 10px;
@@ -19,11 +30,17 @@
             background: #148df0;
             color: white;
         }
+        #back{
+            position: relative;
+            left: 500px;
+            bottom: 40px;
+        }
     </style>
 </head>
 <body>
-    <form method="POST" name="add_form" enctype="multipart/form-data">
+    <form method="POST" name="form" enctype="multipart/form-data">
         {{form.csrf_token}}
+        <div class="mb-3">
         <label for="diary_title">제목</label>
         <input type="text" class="form-control" id="diary_title" name="diary_title" required/><br><br>
         
@@ -32,11 +49,13 @@
         
         <label for="diary_content">내용</label>
         <textarea cols="50" rows="20" class="form-control" id="diary_content" name="diary_content"></textarea><br><br>
-        
+        </div>
+
         <label for="image">사진 업로드</label>
         <input type="file" id="image" name="image"/>
         
         <button type="submit" id="btn_upload">완료</button>
     </form>
+        <button type="button" id="back" onclick="location.href='main'">돌아가기</button>
 </body>
 </html>
